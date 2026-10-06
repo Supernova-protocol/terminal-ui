@@ -1,30 +1,46 @@
-[Uploading terminal_ui_readme.md…]()
-# terminal-ui# Supernova Terminal UI 🌌
+# Supernova
 
-**The Institutional-Grade Frontend for Supernova V2**
+Solana memecoin launchpad, trading terminal and AI analyst.
 
-This repository contains the interface architecture for the Supernova V2 launchpad and trading terminal. Built for absolute speed, seamless UX, and real-time data streaming, the terminal is designed to handle high-frequency retail flow alongside institutional sizing.
+- **Launch** real SPL coins on Raydium LaunchLab bonding curves (fixed 1B supply; the coin graduates to a Raydium pool when the curve fills, 85 SOL by default), with an AI coin creator that writes the name, ticker and pitch and finds a photo.
+- **Trade** on the curve from the terminal (live on-chain chart, depth, tape, position and PnL), with Jito-protected sends and Jupiter routing for graduated coins on mainnet.
+- **Connect** Phantom, Solflare, Trust Wallet, Backpack and any Wallet Standard wallet, with deep links into the wallets' in-app browsers on phones.
+- **AI analyst (Pro)**: "Is this a rug?", "Are whales buying or dumping?", "Best entry & take-profit?" or any question, answered by Claude from real on-chain and market data (dev wallet, holders, authorities, launch snipes, flow, technicals). Levels are drawn on the chart.
+- **Pro payments**: card, Apple Pay and Google Pay through Stripe, or SOL from the wallet, verified on-chain. Optional "Buy SOL with Apple Pay" through MoonPay.
+- **Revenue**: your own LaunchLab platform fee on every curve trade, claimable as SOL on `/admin.html`.
 
-## 🖥️ Tech Stack Topology
+Non-custodial: users sign every transaction in their own wallet; the server never handles keys or funds.
 
-We engineered the frontend to be extremely lightweight and brutally fast, stripping away heavy framework bloat where possible.
+## Quick start
 
-* **Core:** Vanilla ES6 JavaScript, HTML5
-* **Styling:** Tailwind CSS (configured for ultra-dark mode and custom neon UI elements)
-* **Data Visualization:** TradingView Lightweight Charts (v5) for high-fidelity 1-second candlesticks, Chart.js for PnL tracking.
-* **AI Integration:** Direct prompt-injection pipelines for the Supernova AI Analyst and Gemini Token Builder.
-* **Animations:** Hardware-accelerated CSS keyframes and Vanilla JS intersection observers for fluid scrollytelling.
+```bash
+npm install
+npm run dev:mock   # full site offline on a simulated chain, no accounts needed
+```
 
-## 📂 File Structure
+Then follow **[SETUP.md](SETUP.md)** to deploy on Vercel, connect the services and go from devnet to mainnet.
 
-* `index.html`: The main Single Page Application (SPA). Contains the Start Hub, Pro Terminal, Profile HUD, and Token Deployer.
-* `launchpad-flow.html`: The interactive scrollytelling component explaining the Supernova War Chest and Fee splits.
-* `teaser.html`: The cinematic CSS-animated pre-launch teaser sequence.
+## Project layout
 
-## 🚧 Status: UI Pre-Release
+```
+index.html, admin.html     pages (Vite entry points)
+src/app.js                 the UI (discover, terminal, launch, profile, Pro)
+src/live/                  wallet, chain, LaunchLab, Jupiter and API clients
+src/admin.ts               admin page (setup checklist, platform, fees)
+api/router.ts              the single Vercel function
+server/routes/, server/lib/ API: auth, market data, launches, AI, payments
+scripts/mock/              offline simulator for development (never deployed)
+tests/unit/, tests/e2e/    Vitest unit tests, Playwright browser tests
+```
 
-**Notice:** The UI components in this repository are currently hardcoded with simulated WebSocket feeds and mock heuristics for zero-knowledge frontend testing. 
+## Scripts
 
-Live API endpoints (RPC integration, Jito bundle submission, and real-time DexScreener parsing) will be un-stubbed and activated synchronously with our Mainnet-Beta smart contract deployment.
+| Command | What it does |
+|---|---|
+| `npm run dev` | Dev server with the real API (variables from `.env.local`) |
+| `npm run dev:mock` | Dev server on the offline simulator |
+| `npm test` | Unit tests |
+| `npm run typecheck` | TypeScript check |
+| `npm run build` | Production build into `dist/` |
 
-*Abstracting Complexity. Engineering Liquidity.*
+Not financial advice. Memecoins are extremely risky.

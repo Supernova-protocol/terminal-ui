@@ -1,0 +1,45 @@
+{
+  "name": "supernova-v2",
+  "private": true,
+  "version": "2.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "test": "vitest run",
+    "dev:mock": "MOCK=1 vite"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.131.0",
+    "@fortawesome/fontawesome-free": "^6.7.2",
+    "@raydium-io/raydium-sdk-v2": "^0.2.73-alpha",
+    "@solana/spl-token": "^0.4.15",
+    "@solana/web3.js": "^1.99.0",
+    "@upstash/redis": "^1.39.0",
+    "@wallet-standard/app": "^1.1.1",
+    "@wallet-standard/base": "^1.1.1",
+    "bn.js": "^5.2.5",
+    "bs58": "^6.0.0",
+    "buffer": "^6.0.3",
+    "chart.js": "^4.4.9",
+    "jose": "^6.2.12",
+    "lightweight-charts": "^5.0.9",
+    "stripe": "^23.0.0",
+    "tweetnacl": "^1.0.3"
+  },
+  "devDependencies": {
+    "@types/bn.js": "^5.2.0",
+    "@types/node": "^26.6.4",
+    "autoprefixer": "^10.6.1",
+    "postcss": "^8.5.28",
+    "tailwindcss": "^3.4.19",
+    "typescript": "^5.9.3",
+    "vite": "^8.3.2",
+    "vitest": "^5.0.3"
+  },
+  "overrides": {
+    "jayson": "^5.0.0"
+  }
+}

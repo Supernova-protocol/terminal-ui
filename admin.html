@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#020205">
+<meta name="color-scheme" content="dark">
+<title>Supernova admin</title>
+<style>html,body{background:#020205;margin:0}</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap">
+</head>
+<body class="adm">
+<div class="bg-aura" aria-hidden="true"></div>
+<div class="bg-grid" aria-hidden="true"></div>
+
+<header class="adm-hdr">
+  <a class="brand" href="/" aria-label="Back to Supernova">
+    <svg class="adm-mark" viewBox="0 0 48 48" aria-hidden="true"><defs><linearGradient id="am" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#00F3FF"/><stop offset="1" stop-color="#A855F7"/></linearGradient></defs><path d="M24 3 L28.5 19.5 L45 24 L28.5 28.5 L24 45 L19.5 28.5 L3 24 L19.5 19.5 Z" fill="none" stroke="url(#am)" stroke-width="2.2" stroke-linejoin="round"/><circle cx="24" cy="24" r="3.2" fill="#00F3FF"/></svg>
+    <span class="wordmark">SUPERNOVA<em>ADMIN</em></span>
+  </a>
+  <div class="flex-1"></div>
+  <span class="chip mono hidden sm:inline-flex" id="adm-net"><span class="live-dot"></span>…</span>
+  <button class="btn btn-primary btn-sm" id="adm-wallet-btn"><i class="fa-solid fa-wallet"></i><span>Connect wallet</span></button>
+</header>
+
+<main class="adm-main">
+  <section class="adm-intro">
+    <h1>Platform admin</h1>
+    <p>Set up your own LaunchLab platform so the platform fee on every Supernova trade goes to your wallet, check which services are switched on, and claim the fees you have earned. Everything here is signed by your wallet: Supernova never sees a private key.</p>
+  </section>
+
+  <div class="adm-grid">
+    <section class="panel glass" aria-labelledby="setup-title">
+      <div class="panel-hd"><h2 class="panel-title" id="setup-title"><i class="fa-solid fa-list-check"></i>Setup checklist</h2><span class="panel-sub" id="setup-score"></span></div>
+      <ul class="adm-checks" id="setup-list"><li class="muted">Loading…</li></ul>
+      <div class="adm-foot">Each missing item names the environment variable to add in Vercel → Project → Settings → Environment Variables. Redeploy after changing them. SETUP.md has the step-by-step guide.</div>
+    </section>
+
+    <section class="panel glass" aria-labelledby="plat-title">
+      <div class="panel-hd"><h2 class="panel-title" id="plat-title"><i class="fa-solid fa-building-columns"></i>Your LaunchLab platform</h2><span class="panel-sub mono" id="plat-cluster"></span></div>
+      <div class="p-4 grid gap-3" id="plat-body"><div class="muted">Loading…</div></div>
+    </section>
+
+    <section class="panel glass" aria-labelledby="fees-title">
+      <div class="panel-hd"><h2 class="panel-title" id="fees-title"><i class="fa-solid fa-coins"></i>Platform fees</h2><span class="panel-sub">Paid in SOL on every curve trade</span></div>
+      <div class="p-4 grid gap-3" id="fees-body"><div class="muted">Connect the wallet that receives platform fees.</div></div>
+    </section>
+  </div>
+</main>
+
+<div class="modal-root" id="adm-wallets" role="dialog" aria-modal="true" aria-labelledby="aw-title">
+  <div class="modal panel glass">
+    <div class="panel-hd"><h2 class="panel-title" id="aw-title"><i class="fa-solid fa-wallet"></i>Connect the admin wallet</h2><button class="icon-btn sm" data-aw-close aria-label="Close"><i class="fa-solid fa-xmark"></i></button></div>
+    <div class="p-4 grid gap-2" id="aw-body"></div>
+  </div>
+</div>
+<div id="adm-toast" class="adm-toast" role="status" aria-live="polite" hidden></div>
+
+<script type="module" src="/src/admin.ts"></script>
+</body>
+</html>

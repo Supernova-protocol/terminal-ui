@@ -1,0 +1,46 @@
+/* Admin page (admin.html): reuses the site tokens and components from site.css. */
+body.adm { min-height: 100%; height: auto; }
+.adm-hdr { position: sticky; top: 0; z-index: 20; display: flex; align-items: center; gap: 12px; padding: 10px 20px; border-bottom: 1px solid var(--hairline);
+  background: rgba(2,2,5,.78); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); }
+.adm-hdr .brand { color: inherit; text-decoration: none; }
+.adm-mark { width: 34px; height: 34px; filter: drop-shadow(0 0 10px rgba(0,243,255,.45)); }
+.adm-main { position: relative; z-index: 1; max-width: 1180px; margin: 0 auto; padding: 28px 20px 60px; }
+.adm-intro h1 { margin: 0 0 8px; font-size: clamp(30px, 4.6vw, 46px); font-weight: 900; letter-spacing: -.045em; line-height: 1.02; }
+.adm-intro p { margin: 0 0 22px; max-width: 760px; color: rgb(var(--ink-2)); font-size: 15px; }
+.adm-grid { display: grid; gap: 16px; grid-template-columns: minmax(0, 1fr); }
+@media (min-width: 980px) { .adm-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr); } .adm-grid > :first-child { grid-row: span 2; } }
+.muted { color: rgb(var(--ink-3)); font-size: 13px; }
+.adm-checks { list-style: none; margin: 0; padding: 6px 0; }
+.adm-checks li { display: grid; grid-template-columns: 22px minmax(0, 1fr); gap: 10px; padding: 10px 16px; border-bottom: 1px solid var(--hairline); }
+.adm-checks li:last-child { border-bottom: 0; }
+.adm-checks .ic { padding-top: 1px; text-align: center; }
+.adm-checks .ok .ic { color: rgb(var(--neon-green)); text-shadow: 0 0 10px rgba(0,255,163,.5); }
+.adm-checks .miss .ic { color: rgb(var(--neon-red)); }
+.adm-checks .opt .ic { color: rgb(var(--neon-amber)); }
+.adm-checks .t { font-weight: 650; font-size: 13.5px; }
+.adm-checks .d { font-size: 12px; color: rgb(var(--ink-3)); margin-top: 2px; }
+.adm-checks code, .adm-code { font-family: var(--font-mono); font-size: 11.5px; padding: 1px 6px; border-radius: 6px; background: rgba(255,255,255,.05); border: 1px solid var(--hairline); color: rgb(var(--ink)); word-break: break-all; }
+.adm-foot { padding: 12px 16px 16px; font-size: 12px; color: rgb(var(--ink-3)); border-top: 1px solid var(--hairline); }
+.adm-kv { display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 10px; }
+.adm-kv > div { padding: 10px 12px; border-radius: 12px; background: rgba(255,255,255,.025); border: 1px solid var(--hairline); min-width: 0; }
+.adm-kv span { display: block; font-size: 11px; color: rgb(var(--ink-3)); }
+.adm-kv b { display: block; font-family: var(--font-mono); font-size: 13px; font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.adm-note { padding: 12px 14px; border-radius: 12px; font-size: 13px; line-height: 1.5; background: rgba(0,243,255,.05); border: 1px solid rgba(0,243,255,.2); }
+.adm-note.warn { background: rgba(255,190,92,.07); border-color: rgba(255,190,92,.28); }
+.adm-note.ok { background: rgba(0,255,163,.06); border-color: rgba(0,255,163,.24); }
+.adm-note b { color: #fff; }
+.adm-form { display: grid; gap: 12px; }
+.adm-row { display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); }
+.adm-sum { font-size: 12px; color: rgb(var(--ink-3)); }
+.adm-sum.bad { color: rgb(var(--neon-red)); }
+.adm-copy { display: flex; align-items: center; gap: 8px; min-width: 0; }
+.adm-copy .adm-code { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.adm-toast { position: fixed; left: 50%; bottom: calc(20px + env(safe-area-inset-bottom, 0px)); transform: translateX(-50%); z-index: 100; max-width: min(560px, calc(100% - 32px));
+  padding: 12px 16px; border-radius: 14px; font-size: 13px; background: rgba(12,12,24,.96); border: 1px solid var(--hairline-2); box-shadow: 0 20px 50px -20px rgba(0,0,0,.9); }
+.adm-toast.err { border-color: rgba(255,59,105,.5); }
+.adm-toast.ok { border-color: rgba(0,255,163,.45); }
+.adm-toast a { color: rgb(var(--neon-cyan)); }
+select.field { appearance: none; background-image: linear-gradient(45deg, transparent 50%, rgb(var(--ink-2)) 50%), linear-gradient(135deg, rgb(var(--ink-2)) 50%, transparent 50%);
+  background-position: calc(100% - 18px) 50%, calc(100% - 13px) 50%; background-size: 5px 5px; background-repeat: no-repeat; padding-right: 32px; }
+select.field option { background: #0b0b16; color: #e8ebf5; }
+@media (max-width: 640px) { .adm-hdr { padding: 10px 14px; } .adm-main { padding: 20px 16px 48px; } }
